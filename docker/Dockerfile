@@ -5,9 +5,7 @@ FROM php:8.4-apache
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Install wget and unzip for downloading UserSpice
-RUN apt-get update && apt-get install -y wget unzip && docker-php-ext-install zip && rm -rf /var/lib/apt/lists/*
-#
-RUN docker-php-ext-install zip
+RUN apt-get update && apt-get install -y wget \ libzip-dev \ unzip \ && docker-php-ext-install zip && rm -rf /var/lib/apt/lists/*
 
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite
