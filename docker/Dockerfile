@@ -2,7 +2,7 @@
 FROM php:8.4-apache
 
 # Install MySQL extension and other dependencies
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql zip
 
 # Install wget and unzip for downloading UserSpice
 RUN apt-get update && apt-get install -y wget unzip && rm -rf /var/lib/apt/lists/*
