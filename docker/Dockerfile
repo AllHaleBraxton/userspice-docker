@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     RemoteIPHeader X-Forwarded-For\n\
     RemoteIPInternalProxy 199.1.1.100\n\
 </IfModule>' > /etc/apache2/conf-available/remoteip.conf \
-    && a2enconf remoteip
+    && a2enconf remoteip \
     unzip \ 
     && docker-php-ext-install zip \ 
     && rm -rf /var/lib/apt/lists/*
