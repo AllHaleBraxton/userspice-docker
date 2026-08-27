@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y \
 
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite
-RUN a2enmod remoteip
 
 RUN service apache2 restart
 
