@@ -1,7 +1,7 @@
 networks:
   www_network:
     external: true
-  tools_network:
+  userspice_default:
     name: userspice_default
     driver: bridge
     ipam:
