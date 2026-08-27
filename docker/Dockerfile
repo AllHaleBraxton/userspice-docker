@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite \
-    a2enmod remoteip
+    && a2enmod remoteip
 
 # Copy Docker-configured init.php
 COPY ./docker/init.php /docker/init.php
