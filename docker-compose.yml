@@ -1,12 +1,12 @@
 networks:
   www_network:
     external: true
-  userspice_default:
-    name: userspice_default
+  userspice_network:
+    name: userspice_network
     driver: bridge
     ipam:
       config:
-        - subnet: 199.1.1.0/24
+        - subnet: 199.199.1.0/24
 
 services:
   apache:
@@ -20,7 +20,7 @@ services:
       - ${USERSPICE_DIR}/www:/var/www/html
     networks:
       - www_network
-      - userspice_default
+      - userspice_network
     depends_on:
       mysql:
         condition: service_healthy
@@ -37,7 +37,7 @@ services:
       - mysql_data:/var/lib/mysql
       - ${USERSPICE_DIR}/sql/sql.sql:/docker-entrypoint-initdb.d/sql.sql
     networks:
-      - userspice_default
+      - userspice_network
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -51,7 +51,7 @@ services:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     networks:
-      - userspice_default
+      - userspice_network
     ports:
       - "${PHPMYADMIN_PORT}:80"
     depends_on:
