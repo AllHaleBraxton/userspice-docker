@@ -1,4 +1,6 @@
-version: '3.7'
+networks:
+  www_network:
+    external: true
 
 services:
   apache:
@@ -10,6 +12,8 @@ services:
       - "${APACHE_PORT}:80"
     volumes:
       - ${USERSPICE_DIR}/www:/var/www/html
+    networks:
+      - www_network
     depends_on:
       mysql:
         condition: service_healthy
