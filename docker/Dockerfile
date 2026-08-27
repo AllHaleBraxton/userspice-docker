@@ -8,13 +8,13 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN apt-get update && apt-get install -y \ 
     wget \ 
     libzip-dev \ 
-    a2enmod remoteip \
     unzip \ 
     && docker-php-ext-install zip \ 
     && rm -rf /var/lib/apt/lists/*
 
 # Enable mod_rewrite for Apache
-RUN a2enmod rewrite
+RUN a2enmod rewrite \
+    a2enmod remoteip
 
 # Copy Docker-configured init.php
 COPY ./docker/init.php /docker/init.php
