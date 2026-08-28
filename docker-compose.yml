@@ -18,7 +18,7 @@ services:
       - "${APACHE_PORT}:80"
     volumes:
       - ${USERSPICE_DIR}/www:/var/www/html
-      - userspice-apache:/etc/apache2
+      - apache_config:/etc/apache2
     networks:
       - www_network
       - userspice_network
